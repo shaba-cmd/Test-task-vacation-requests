@@ -1,7 +1,8 @@
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
 export function parseDate(value) {
-  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value))
+    return null;
   const date = new Date(`${value}T00:00:00.000Z`);
   if (Number.isNaN(date.getTime())) return null;
   if (date.toISOString().slice(0, 10) !== value) return null;

@@ -1,8 +1,8 @@
-import { randomUUID } from 'node:crypto';
-import fs from 'node:fs/promises';
-import path from 'node:path';
+import { randomUUID } from "node:crypto";
+import fs from "node:fs/promises";
+import path from "node:path";
 
-const DEFAULT_FILE = path.resolve(process.cwd(), 'data/requests.json');
+const DEFAULT_FILE = path.resolve(process.cwd(), "data/requests.json");
 
 export function createStore({ file = DEFAULT_FILE } = {}) {
   let cache = null;
@@ -11,11 +11,11 @@ export function createStore({ file = DEFAULT_FILE } = {}) {
   async function load() {
     if (cache) return cache;
     try {
-      const text = await fs.readFile(file, 'utf8');
+      const text = await fs.readFile(file, "utf8");
       const parsed = JSON.parse(text);
       cache = Array.isArray(parsed?.requests) ? parsed.requests : [];
     } catch (err) {
-      if (err.code !== 'ENOENT') throw err;
+      if (err.code !== "ENOENT") throw err;
       cache = [];
     }
     return cache;
@@ -26,7 +26,7 @@ export function createStore({ file = DEFAULT_FILE } = {}) {
     writeChain = writeChain.then(async () => {
       await fs.mkdir(path.dirname(file), { recursive: true });
       const tmp = `${file}.${process.pid}.tmp`;
-      await fs.writeFile(tmp, snapshot, 'utf8');
+      await fs.writeFile(tmp, snapshot, "utf8");
       await fs.rename(tmp, file);
     });
     return writeChain;
@@ -35,7 +35,9 @@ export function createStore({ file = DEFAULT_FILE } = {}) {
   return {
     async list({ status } = {}) {
       const items = await load();
-      const filtered = status ? items.filter((r) => r.status === status) : items.slice();
+      const filtered = status
+        ? items.filter((r) => r.status === status)
+        : items.slice();
       return filtered.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
     },
 
@@ -53,7 +55,7 @@ export function createStore({ file = DEFAULT_FILE } = {}) {
         dateFrom: data.dateFrom,
         dateTo: data.dateTo,
         reason: data.reason,
-        status: 'pending',
+        status: "pending",
         rejectionReason: null,
         createdAt: now,
         decidedAt: null,

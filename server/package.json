@@ -1,11 +1,13 @@
 {
   "name": "vacation-requests-server",
   "version": "1.0.0",
-  "private": true,  
+  "private": true,
   "description": "REST API для заявок на отпуск",
   "license": "ISC",
   "type": "module",
-  "engines": { "node": ">=24" },
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
