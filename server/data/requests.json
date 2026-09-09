@@ -1,0 +1,26 @@
+{
+  "requests": [
+    {
+      "id": "880880c2-8d18-417e-b0d0-3cae0b50cbd4",
+      "employeeName": "Шабалин Игорь Александрович",
+      "dateFrom": "2026-09-09",
+      "dateTo": "2026-09-24",
+      "reason": "Потому что",
+      "status": "approved",
+      "rejectionReason": null,
+      "createdAt": "2026-09-09T11:07:01.852Z",
+      "decidedAt": "2026-09-09T11:08:01.627Z"
+    },
+    {
+      "id": "bc13b98c-5dbe-49e4-824f-7b9ff5457516",
+      "employeeName": "так так",
+      "dateFrom": "2026-09-09",
+      "dateTo": "2026-09-09",
+      "reason": "ф",
+      "status": "rejected",
+      "rejectionReason": "нет",
+      "createdAt": "2026-09-09T11:07:22.238Z",
+      "decidedAt": "2026-09-09T11:07:51.098Z"
+    }
+  ]
+}
